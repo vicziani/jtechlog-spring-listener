@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.exparity.hamcrest.date.DateMatchers.within;
 import static org.junit.Assert.assertThat;
-import static uk.co.it.modular.hamcrest.date.DateMatchers.within;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
