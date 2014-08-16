@@ -17,11 +17,14 @@ public class TimeMachineTestExecutionListener extends AbstractTestExecutionListe
 
         if (timeMachine != null) {
             DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm");
-            DateTime realTime = new DateTime(new Date());
-            DateTime machineTime = formatter.parseDateTime(timeMachine.targetDate());
-
-            long offset = machineTime.getMillis() - realTime.getMillis();
-            DateTimeUtils.setCurrentMillisOffset(offset);
+            DateTime targetTime = formatter.parseDateTime(timeMachine.targetDate());
+            engage(targetTime);
         }
+    }
+
+    private void engage(DateTime targetTime) {
+        DateTime realTime = new DateTime(new Date());
+        long offset = targetTime.getMillis() - realTime.getMillis();
+        DateTimeUtils.setCurrentMillisOffset(offset);
     }
 }
